@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "tsc && node ./build"
+    "start": "start cmd /k \"tsc && node ./build && exit\""
   },
   "main": "./src/",
   "devDependencies": {
