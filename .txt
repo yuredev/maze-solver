@@ -1,0 +1,54 @@
+instalar typescript com 
+> yarn add typescript -D 
+
+após isso o comando tsc ficará disponivel 
+em node_modules/bin 
+assim digitando 
+> yarn tsc 
+funcionará 
+
+é preciso criar um arquivo de 
+configuração usando o tsc 
+> yarn tsc --init
+isso criará o arquivo de configuração
+tsconfig.json
+
+após isso apenas o 
+> yarn tsc 
+já converterá os arquivos .ts para .js
+
+podemos definir a pasta o .js 
+gerado em outDir que inicialmente 
+está comentado em tsconfig.json 
+assim basta descomentar 
+e colocar a pasta desejada
+
+a pasta desejada segue a mesma 
+estrutura de src/
+
+sempre usar o tsc pra gerar o build 
+e executar o .js de build gerado para 
+executar é uma tarefa demorada e chata 
+
+podemos ao invés de utilizar o build 
+para deploy, usar o ts-node-dev
+
+esse modulo faz dois papeis o de 
+transpilar .ts para .js e startar um 
+servidor de desenvolvimento assim 
+como o nodemon
+
+para usá-lo basta 
+> yarn ts-node-dev <arquivo.ts>
+
+para deixar ainda mais rápido é 
+possível fazer ele apenas transpilar 
+ignorando erros de sintaxe
+basta adicionar o --transpileOnly
+> ts-node-dev --transpileOnly <arquivo.ts>
+
+é preciso também fazer com que ele 
+pare de observar alterações da pasta 
+node_modules uma vez que não vamos alterá-la
+basta adicionar --ignore-watch node_modules
+> ts-node-dev --transpileOnly --ignore-watch node_modules <arquivo.ts>
