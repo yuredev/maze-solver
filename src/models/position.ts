@@ -16,26 +16,34 @@ export default class Position {
   public isEqual(position: Position) {
     return this.i === position.getI() && this.j === position.getJ();
   }
-  private movePosition(maze: Maze, sumI: number, sumJ: number): Position | null {
-    if (maze.getArray()[this.getI() + sumI][this.getJ() + sumJ] === 0) {
-      const newPositionCordenates = {
-        i: this.i + sumI,
-        j: this.j + sumJ,
-      };
-      return new Position(newPositionCordenates.i, newPositionCordenates.j);
-    }
-    return null;
-  } 
-  public moveDown(maze: Maze): Position | null {
+  private movePosition(maze: Maze, sumI: number, sumJ: number): Position {
+    return new Position(this.i + sumI, this.j + sumJ);
+  }
+  private newPositionIsValid(maze: Maze, sumI: number, sumJ: number) {
+    return maze.getArray()[this.getI() + sumI][this.getJ() + sumJ] === 0;
+  }
+  public moveDown(maze: Maze): Position {
     return this.movePosition(maze, 1, 0);
   }
-  public moveRight(maze: Maze): Position | null {
+  public isFreeBelow(maze: Maze): boolean {
+    return this.newPositionIsValid(maze, 1, 0);
+  }
+  public moveRight(maze: Maze): Position {
     return this.movePosition(maze, 0, 1);
   }
-  public moveUp(maze: Maze): Position | null {
+  public isFreeInTheRight(maze: Maze): boolean {
+    return this.newPositionIsValid(maze, 0, 1);
+  }
+  public moveUp(maze: Maze): Position {
     return this.movePosition(maze, -1, 0);
   }
-  public moveLeft(maze: Maze): Position | null {
+  public isFreeAbove(maze: Maze): boolean {
+    return this.newPositionIsValid(maze, -1, 0);
+  }
+  public moveLeft(maze: Maze): Position {
     return this.movePosition(maze, 0, -1);
+  }
+  public isFreeInTheLeft(maze: Maze): boolean {
+    return this.newPositionIsValid(maze, 0, -1);
   }
 }

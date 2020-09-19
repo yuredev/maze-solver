@@ -38,6 +38,8 @@ export default class Maze {
         let current = this.mazeArray[i][j];
         if (i === position.getI() && j === position.getJ()) {
           result += 'YM';
+        } else if (i === this.finalPosition.getI() && j === this.finalPosition.getJ()) {
+          result += '##';
         } else if (current == 0) {
           result += '  ';
         } else if (current == 1) {
