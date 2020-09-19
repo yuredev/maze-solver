@@ -1,1 +1,0 @@
-gcc depth-search-first.c -o depth-search-first && depth-search-first.exe
