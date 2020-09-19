@@ -36,7 +36,7 @@ export default class Position {
   }
   public moveLeft(maze: Maze) {
     if (maze.getArray()[this.getI()][this.getJ() - 1] === 0) {
-      this.j++;
+      this.j--;
     }
     return this;
   }

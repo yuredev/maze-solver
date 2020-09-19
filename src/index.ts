@@ -24,7 +24,7 @@ function search(position: Position): void {
   if (alreadyVisited(position, visitedPositions)) {
     console.log('Já visitou!!!');
     return;
-  }
+  } 
   if (maze.isSolved(position)) {
     console.log('Saída encontrada!!!');
     return;
@@ -32,8 +32,8 @@ function search(position: Position): void {
     visitedPositions.push(new Position(position.getI(), position.getJ()));
     search(position.moveDown(maze));
     search(position.moveRight(maze));
-    search(position.moveLeft(maze));
     search(position.moveUp(maze));
+    search(position.moveLeft(maze));
   }
 }
 
