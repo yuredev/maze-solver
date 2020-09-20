@@ -1,6 +1,6 @@
 import Maze from './models/maze';
 import Position from './models/position';
-import { maze1Data, maze2Data, maze3Data } from './dummy_mazes_data';
+import { maze1Data, maze2Data, maze3Data, maze4data } from './dummy_mazes_data';
 
 const maze1 = new Maze({
   initialPosition: new Position(1, 1),
@@ -20,4 +20,10 @@ const maze3 = new Maze({
   mazeArray: maze3Data,
 });
 
-export { maze1, maze2, maze3 };
+const maze4 = new Maze({
+  initialPosition: new Position(1, 1),
+  finalPosition: new Position(maze4data.length - 2, maze4data.length - 2),
+  mazeArray: maze4data,
+});
+
+export { maze1, maze2, maze3, maze4 };

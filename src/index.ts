@@ -1,4 +1,4 @@
-import { maze1, maze2, maze3 } from './mazes';
+import { maze1, maze2, maze3, maze4 } from './mazes';
 import search from './search';
 import Position from './models/position';
 

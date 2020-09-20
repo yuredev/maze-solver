@@ -10,9 +10,11 @@ function search(position: Position, maze: Maze): void {
     }
     visitedPositions.push(new Position(position.getI(), position.getJ()));
     console.log('----------------> Solving Maze... <----------------\n\n');
+    // console.clear();
     console.log(maze.toString(position));
 
     if (maze.isSolved(position)) {
+      // console.clear();
       console.log('----------------> Maze Solved!! <----------------\n\n');
       console.log(maze.toString(position));
       process.exit();
@@ -21,7 +23,7 @@ function search(position: Position, maze: Maze): void {
     search(position.moveRight(maze), maze);
     search(position.moveUp(maze), maze);
     search(position.moveLeft(maze), maze);
-  }, 500);
+  }, 50);
 }
 
 function positionWasVisited(
