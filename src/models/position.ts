@@ -7,6 +7,24 @@ export default class Position {
     this.i = i;
     this.j = j;
   }
+  private isFreeBelow(maze: Maze): boolean {
+    return this.newPositionIsValid(maze, 1, 0);
+  }
+  private isFreeInTheRight(maze: Maze): boolean {
+    return this.newPositionIsValid(maze, 0, 1);
+  }
+  private isFreeAbove(maze: Maze): boolean {
+    return this.newPositionIsValid(maze, -1, 0);
+  }
+  private isFreeInTheLeft(maze: Maze): boolean {
+    return this.newPositionIsValid(maze, 0, -1);
+  }
+  private newPositionIsValid(maze: Maze, sumI: number, sumJ: number) {
+    return maze.getArray()[this.getI() + sumI][this.getJ() + sumJ] === 0;
+  }
+  private movePosition(sumI: number, sumJ: number): Position {
+    return new Position(this.i + sumI, this.j + sumJ);
+  }
   public getI(): number {
     return this.i;
   }
@@ -16,34 +34,16 @@ export default class Position {
   public isEqual(position: Position) {
     return this.i === position.getI() && this.j === position.getJ();
   }
-  private movePosition(sumI: number, sumJ: number): Position {
-    return new Position(this.i + sumI, this.j + sumJ);
-  }
-  private newPositionIsValid(maze: Maze, sumI: number, sumJ: number) {
-    return maze.getArray()[this.getI() + sumI][this.getJ() + sumJ] === 0;
-  }
   public moveDown(maze: Maze): Position {
-    return this.movePosition(1, 0);
-  }
-  public isFreeBelow(maze: Maze): boolean {
-    return this.newPositionIsValid(maze, 1, 0);
+    return this.isFreeBelow(maze) ? this.movePosition(1, 0) : this;
   }
   public moveRight(maze: Maze): Position {
-    return this.movePosition(0, 1);
-  }
-  public isFreeInTheRight(maze: Maze): boolean {
-    return this.newPositionIsValid(maze, 0, 1);
+    return this.isFreeInTheRight(maze) ? this.movePosition(0, 1) : this;
   }
   public moveUp(maze: Maze): Position {
-    return this.movePosition(-1, 0);
-  }
-  public isFreeAbove(maze: Maze): boolean {
-    return this.newPositionIsValid(maze, -1, 0);
+    return this.isFreeAbove(maze) ? this.movePosition(-1, 0) : this;
   }
   public moveLeft(maze: Maze): Position {
-    return this.movePosition(0, -1);
-  }
-  public isFreeInTheLeft(maze: Maze): boolean {
-    return this.newPositionIsValid(maze, 0, -1);
+    return this.isFreeInTheLeft(maze) ? this.movePosition(0, -1) : this;
   }
 }

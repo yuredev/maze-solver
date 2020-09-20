@@ -9,28 +9,18 @@ function search(position: Position, maze: Maze): void {
       return;
     }
     visitedPositions.push(new Position(position.getI(), position.getJ()));
-    // console.clear();
     console.log('----------------> Solving Maze... <----------------\n\n');
     console.log(maze.toString(position));
 
     if (maze.isSolved(position)) {
-      // console.clear();
       console.log('----------------> Maze Solved!! <----------------\n\n');
       console.log(maze.toString(position));
       process.exit();
     }
-    if (position.isFreeBelow(maze)) {
-      search(position.moveDown(maze), maze);
-    }
-    if (position.isFreeInTheRight(maze)) {
-      search(position.moveRight(maze), maze);
-    }
-    if (position.isFreeAbove(maze)) {
-      search(position.moveUp(maze), maze);
-    }
-    if (position.isFreeInTheLeft(maze)) {
-      search(position.moveLeft(maze), maze);
-    }
+    search(position.moveDown(maze), maze);
+    search(position.moveRight(maze), maze);
+    search(position.moveUp(maze), maze);
+    search(position.moveLeft(maze), maze);
   }, 500);
 }
 
