@@ -284,6 +284,11 @@ map-obj@^1.0.0, map-obj@^1.0.1:
   resolved "https://registry.yarnpkg.com/map-obj/-/map-obj-1.0.1.tgz#d933ceb9205d82bdcf4886f6742bdc2b4dea146d"
   integrity sha1-2TPOuSBdgr3PSIb2dCvcK03qFG0=
 
+maze-generator@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/maze-generator/-/maze-generator-0.1.2.tgz#27f6a4a7c47ce11af5c7d1ac9f63f23384df6e08"
+  integrity sha1-J/akp8R84Rr1x9Gsn2PyM4Tfbgg=
+
 meow@^3.3.0:
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/meow/-/meow-3.7.0.tgz#72cb668b425228290abbfa856892587308a801fb"
