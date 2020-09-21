@@ -6,7 +6,7 @@ interface MazeDTO {
   finalPosition: Position;
 }
 
-export default class Maze {
+class Maze {
   private mazeArray: number[][];
   private initialPosition: Position;
   private finalPosition: Position;
@@ -16,6 +16,21 @@ export default class Maze {
     this.initialPosition = initialPosition;
     this.finalPosition = finalPosition;
   }
+  private newPositionIsValid(position: Position, sumI: number, sumJ: number) {
+    return this.mazeArray[position.i + sumI][position.j + sumJ] === 0;
+  }
+  public isFreeBelow(position: Position): boolean {
+    return this.newPositionIsValid(position, 1, 0);
+  }
+  public isFreeInTheRight(position: Position): boolean {
+    return this.newPositionIsValid(position, 0, 1);
+  }
+  public isFreeAbove(position: Position): boolean {
+    return this.newPositionIsValid(position, -1, 0);
+  }
+  public isFreeInTheLeft(position: Position): boolean {
+    return this.newPositionIsValid(position, 0, -1);
+  }
   public getInitialPosition(): Position {
     return this.initialPosition;
   }
@@ -23,11 +38,8 @@ export default class Maze {
     return this.finalPosition;
   }
   public isSolved(position: Position): boolean {
-    return position.getI() === this.finalPosition.getI() && 
-      position.getJ() === this.finalPosition.getJ();
-  }
-  public getArray(): number[][] {
-    return this.mazeArray;
+    return position.i === this.finalPosition.i && 
+      position.j === this.finalPosition.j;
   }
   public toString(position: Position): string {
     let result = '';
@@ -36,9 +48,9 @@ export default class Maze {
     for (let i = 0; i < this.mazeArray.length; i++) {
       for (let j = 0; j < this.mazeArray[i].length; j++) {
         let current = this.mazeArray[i][j];
-        if (i === position.getI() && j === position.getJ()) {
+        if (i === position.i && j === position.j) {
           result += 'YM';
-        } else if (i === this.finalPosition.getI() && j === this.finalPosition.getJ()) {
+        } else if (i === this.finalPosition.i && j === this.finalPosition.j) {
           result += '##';
         } else if (current == 0) {
           result += '  ';
@@ -51,3 +63,5 @@ export default class Maze {
     return result;
   }
 }
+
+export default Maze;

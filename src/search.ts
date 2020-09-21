@@ -1,5 +1,6 @@
 import Maze from './models/maze';
 import Position from './models/position';
+const chalk = require('chalk');
 
 const visitedPositions: Array<Position> = [];
 
@@ -8,22 +9,21 @@ function search(position: Position, maze: Maze): void {
     if (positionWasVisited(position, visitedPositions)) {
       return;
     }
-    visitedPositions.push(new Position(position.getI(), position.getJ()));
-    console.log('----------------> Solving Maze... <----------------\n\n');
-    // console.clear();
-    console.log(maze.toString(position));
-
+    visitedPositions.push(new Position(position.i, position.j));
     if (maze.isSolved(position)) {
-      // console.clear();
-      console.log('----------------> Maze Solved!! <----------------\n\n');
+      console.log(chalk.cyan('----------------> Maze Solved!! <----------------\n\n'));
       console.log(maze.toString(position));
+      console.log(chalk.cyan('-------------------------------------------------'));
       process.exit();
     }
+    console.log('----------------> Solving Maze... <----------------\n\n');
+    console.log(maze.toString(position));
+
     search(position.moveDown(maze), maze);
     search(position.moveRight(maze), maze);
     search(position.moveUp(maze), maze);
     search(position.moveLeft(maze), maze);
-  }, 50);
+  }, 200);
 }
 
 function positionWasVisited(
