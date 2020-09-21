@@ -1,5 +1,5 @@
-import Maze from './models/maze';
-import Position from './models/position';
+import Maze from './classes/maze';
+import Position from './classes/position';
 import { maze1Data, maze2Data, maze3Data, maze4data } from './dummy_mazes_data';
 
 const maze1 = new Maze({

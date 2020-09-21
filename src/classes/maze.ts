@@ -16,20 +16,8 @@ class Maze {
     this.initialPosition = initialPosition;
     this.finalPosition = finalPosition;
   }
-  private newPositionIsValid(position: Position, sumI: number, sumJ: number) {
-    return this.mazeArray[position.i + sumI][position.j + sumJ] === 0;
-  }
-  public isFreeBelow(position: Position): boolean {
-    return this.newPositionIsValid(position, 1, 0);
-  }
-  public isFreeInTheRight(position: Position): boolean {
-    return this.newPositionIsValid(position, 0, 1);
-  }
-  public isFreeAbove(position: Position): boolean {
-    return this.newPositionIsValid(position, -1, 0);
-  }
-  public isFreeInTheLeft(position: Position): boolean {
-    return this.newPositionIsValid(position, 0, -1);
+  public positionIsValid(position: Position): boolean {
+    return this.mazeArray[position.i][position.j] === 0;
   }
   public getInitialPosition(): Position {
     return this.initialPosition;

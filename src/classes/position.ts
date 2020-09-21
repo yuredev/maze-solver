@@ -19,16 +19,16 @@ export default class Position {
   public isEqual(position: Position) {
     return this.i === position.i && this.j === position.j;
   }
-  public moveDown(maze: Maze): Position {
-    return maze.isFreeBelow(this) ? this.movePosition(1, 0) : this;
+  public moveDown(): Position {
+    return this.movePosition(1, 0);
   }
-  public moveRight(maze: Maze): Position {
-    return maze.isFreeInTheRight(this) ? this.movePosition(0, 1) : this;
+  public moveRight(): Position {
+    return this.movePosition(0, 1);
   }
-  public moveUp(maze: Maze): Position {
-    return maze.isFreeAbove(this) ? this.movePosition(-1, 0) : this;
+  public moveUp(): Position {
+    return this.movePosition(-1, 0);
   }
-  public moveLeft(maze: Maze): Position {
-    return maze.isFreeInTheLeft(this) ? this.movePosition(0, -1) : this;
+  public moveLeft(): Position {
+    return this.movePosition(0, -1);
   }
 }

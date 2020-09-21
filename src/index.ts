@@ -1,7 +1,9 @@
 import { maze1, maze2, maze3, maze4 } from './mazes';
-import search from './search';
-import Position from './models/position';
+import MazeSolver from './classes/maze_solver';
+import Position from './classes/position';
 
 const initialPosition = new Position(1,1);
 
-search(initialPosition, maze3);
+const solver = new MazeSolver(maze1);
+
+solver.execute(initialPosition);
