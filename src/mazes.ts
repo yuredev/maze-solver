@@ -1,29 +1,21 @@
 import Maze from './classes/maze';
 import Position from './classes/position';
-import { maze1Data, maze2Data, maze3Data, maze4data } from './dummy_mazes_data';
+import path from 'path';
+import { fileToMatrix } from './utils';
 
-const maze1 = new Maze({
-  initialPosition: new Position(1, 1),
-  finalPosition: new Position(maze1Data.length - 2, maze1Data.length - 2),
-  mazeArray: maze1Data,
-});
+const maze1Data = fileToMatrix(path.resolve('data', 'maze_1.txt'));
+const maze2Data = fileToMatrix(path.resolve('data', 'maze_2.txt'));
+const maze3Data = fileToMatrix(path.resolve('data', 'maze_3.txt'));
+const maze4Data = fileToMatrix(path.resolve('data', 'maze_4.txt'));
+const maze5Data = fileToMatrix(path.resolve('data', 'maze_5.txt'));
 
-const maze2 = new Maze({
-  initialPosition: new Position(1, 1),
-  finalPosition: new Position(maze2Data.length - 2, maze2Data.length - 2),
-  mazeArray: maze2Data,
-});
-
-const maze3 = new Maze({
+const maze1 = new Maze(maze1Data);
+const maze2 = new Maze(maze2Data);
+const maze3 = new Maze(maze3Data, {
   initialPosition: new Position(1, 1),
   finalPosition: new Position(8, 1),
-  mazeArray: maze3Data,
 });
+const maze4 = new Maze(maze4Data);
+const maze5 = new Maze(maze5Data);
 
-const maze4 = new Maze({
-  initialPosition: new Position(1, 1),
-  finalPosition: new Position(maze4data.length - 2, maze4data.length - 2),
-  mazeArray: maze4data,
-});
-
-export { maze1, maze2, maze3, maze4 };
+export { maze1, maze2, maze3, maze4, maze5 };

@@ -1,7 +1,6 @@
 import Position from './position';
 
-interface MazeDTO {
-  mazeArray: number[][];
+interface MazePositions {
   initialPosition: Position;
   finalPosition: Position;
 }
@@ -11,10 +10,16 @@ class Maze {
   private initialPosition: Position;
   private finalPosition: Position;
 
-  constructor({ mazeArray, initialPosition, finalPosition }: MazeDTO) {
+  constructor(
+    mazeArray: number[][],
+    mazePositions: MazePositions = {
+      initialPosition: new Position(1, 1),
+      finalPosition: new Position(mazeArray.length - 2, mazeArray.length - 2),
+    }
+  ) {
     this.mazeArray = mazeArray;
-    this.initialPosition = initialPosition;
-    this.finalPosition = finalPosition;
+    this.finalPosition = mazePositions.finalPosition;
+    this.initialPosition = mazePositions.initialPosition;
   }
   public positionIsValid(position: Position): boolean {
     return this.mazeArray[position.i][position.j] === 0;
@@ -26,8 +31,9 @@ class Maze {
     return this.finalPosition;
   }
   public isSolved(position: Position): boolean {
-    return position.i === this.finalPosition.i && 
-      position.j === this.finalPosition.j;
+    return (
+      position.i === this.finalPosition.i && position.j === this.finalPosition.j
+    );
   }
   public toString(position: Position): string {
     let result = '';
@@ -37,7 +43,7 @@ class Maze {
       for (let j = 0; j < this.mazeArray[i].length; j++) {
         let current = this.mazeArray[i][j];
         if (i === position.i && j === position.j) {
-          result += 'YM';
+          result += '><';
         } else if (i === this.finalPosition.i && j === this.finalPosition.j) {
           result += '##';
         } else if (current == 0) {
