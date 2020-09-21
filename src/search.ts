@@ -25,10 +25,7 @@ function search(position: Position, maze: Maze): void {
   }, 200);
 }
 
-function positionWasVisited(
-  position: Position,
-  positions: Position[]
-): boolean {
+function positionWasVisited(position: Position, positions: Position[]) {
   return positions.filter((pos) => position.isEqual(pos)).length > 0;
 }
 
