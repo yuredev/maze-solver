@@ -1,9 +1,9 @@
 {
   "scripts": {
-    "start": "tsc && node ./build",
-    "cmd": "start cmd /k \"tsc && node ./build\""
+    "start": "tsc && node ./build/main.js",
+    "cmd": "start cmd /k \"tsc && node ./build/main.js\""
   },
-  "main": "./src/",
+  "main": "./src/main.js",
   "devDependencies": {
     "@types/node": "^14.11.1",
     "ts-node-dev": "^1.0.0-pre.62",

@@ -11,10 +11,7 @@ const maze5Data = fileToMatrix(path.resolve('data', 'maze_5.txt'));
 
 const maze1 = new Maze(maze1Data);
 const maze2 = new Maze(maze2Data);
-const maze3 = new Maze(maze3Data, {
-  initialPosition: new Position(1, 1),
-  finalPosition: new Position(8, 1),
-});
+const maze3 = new Maze(maze3Data, new Position(8, 1));
 const maze4 = new Maze(maze4Data);
 const maze5 = new Maze(maze5Data);
 

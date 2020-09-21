@@ -3,6 +3,6 @@ import MazeSolver from './classes/maze_solver';
 import Position from './classes/position';
 const initialPosition = new Position(1,1);
 
-const mazeSolver = new MazeSolver(maze2);
+const mazeSolver = new MazeSolver(maze3);
 
 mazeSolver.execute(initialPosition);
