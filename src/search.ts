@@ -1,6 +1,5 @@
 import Maze from './models/maze';
 import Position from './models/position';
-const chalk = require('chalk');
 
 const visitedPositions: Array<Position> = [];
 
@@ -11,9 +10,9 @@ function search(position: Position, maze: Maze): void {
     }
     visitedPositions.push(new Position(position.i, position.j));
     if (maze.isSolved(position)) {
-      console.log(chalk.cyan('----------------> Maze Solved!! <----------------\n\n'));
+      console.log('----------------> Maze Solved!! <----------------\n\n');
       console.log(maze.toString(position));
-      console.log(chalk.cyan('-------------------------------------------------'));
+      console.log('-------------------------------------------------');
       process.exit();
     }
     console.log('----------------> Solving Maze... <----------------\n\n');
