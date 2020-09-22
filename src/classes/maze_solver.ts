@@ -30,16 +30,16 @@ export default class MazeSolver {
       console.log('----------------> Solving Maze... <----------------\n\n');
       console.log(this.maze.toString(position));
   
-      if (this.maze.isNotWall(position.moveDown())) {
+      if (this.maze.itsNotWall(position.moveDown())) {
         this.execute(position.moveDown());
       }
-      if (this.maze.isNotWall(position.moveRight())) {
+      if (this.maze.itsNotWall(position.moveRight())) {
         this.execute(position.moveRight());
       }
-      if (this.maze.isNotWall(position.moveUp())) {
+      if (this.maze.itsNotWall(position.moveUp())) {
         this.execute(position.moveUp());
       }
-      if (this.maze.isNotWall(position.moveLeft())) {
+      if (this.maze.itsNotWall(position.moveLeft())) {
         this.execute(position.moveLeft());
       }
     }, 200);

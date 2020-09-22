@@ -31,7 +31,7 @@ class Maze {
    * @param position The position to be verified
    * @returns A boolean value that tells if the position is valid
    */
-  public isNotWall(position: Position): boolean {
+  public itsNotWall(position: Position): boolean {
     return this.mazeMatrix[position.i][position.j] === 0;
   }
   /**
