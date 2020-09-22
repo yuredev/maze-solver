@@ -1,5 +1,3 @@
-import Maze from './maze';
-
 export default class Position {
   private _i: number;
   private _j: number;

@@ -20,7 +20,7 @@ export default class MazeSolver {
       if (this.positionWasVisited(position)) {
         return;
       }
-      this.visitedPositions.push(new Position(position.i, position.j));
+      this.visitedPositions.push(position);
       if (this.maze.isSolved(position)) {
         console.log('----------------> Maze Solved!! <----------------\n\n');
         console.log(this.maze.toString(position));
@@ -30,16 +30,16 @@ export default class MazeSolver {
       console.log('----------------> Solving Maze... <----------------\n\n');
       console.log(this.maze.toString(position));
   
-      if (this.maze.positionIsValid(position.moveDown())) {
+      if (this.maze.isNotWall(position.moveDown())) {
         this.execute(position.moveDown());
       }
-      if (this.maze.positionIsValid(position.moveRight())) {
+      if (this.maze.isNotWall(position.moveRight())) {
         this.execute(position.moveRight());
       }
-      if (this.maze.positionIsValid(position.moveUp())) {
+      if (this.maze.isNotWall(position.moveUp())) {
         this.execute(position.moveUp());
       }
-      if (this.maze.positionIsValid(position.moveLeft())) {
+      if (this.maze.isNotWall(position.moveLeft())) {
         this.execute(position.moveLeft());
       }
     }, 200);
