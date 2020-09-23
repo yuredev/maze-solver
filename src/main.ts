@@ -1,6 +1,18 @@
-import { maze1, maze2, maze3, maze4 } from './mazes';
+import Maze from './classes/maze';
 import MazeSolver from './classes/maze_solver';
 import Position from './classes/position';
+import { resolve } from 'path';
+import { fileToMatrix } from './utils';
 
-const mazeSolver = new MazeSolver(maze3);
+const rand = Math.trunc(Math.random() * 5 + 1);
+
+// if the argv was not passed, 
+// the maze path will be one of the .txt path
+// of mazes_data folder
+const path = resolve(process.argv[2]) || resolve('mazes_data', `maze_${rand}.txt`);
+const mazeMatrix = fileToMatrix(path);
+
+const maze = new Maze(mazeMatrix);
+const mazeSolver = new MazeSolver(maze);
+
 mazeSolver.execute(new Position(1,1));

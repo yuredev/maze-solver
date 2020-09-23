@@ -56,8 +56,8 @@ class Maze {
         let current = this.mazeMatrix[i][j];
         if (i === position.i && j === position.j) {
           result += '><';
-        } else if (this.finalPosition.isEqual(new Position(i, j))) {
-          result += '##';
+        } else if (this.finalPosition.moveDown().isEqual(new Position(i, j))) {
+          result += '$$';
         } else if (current == 0) {
           result += '  ';
         } else if (current == 1) {

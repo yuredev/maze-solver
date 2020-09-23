@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "start": "tsc && node ./build/main.js",
-    "cmd": "start cmd /k \"tsc && node ./build/main.js\""
+    "start": "tsc && node ./dist/main.js",
+    "cmd": "start cmd /k \"tsc && node ./dist/main.js\""
   },
   "main": "./src/main.js",
   "devDependencies": {
