@@ -20,7 +20,7 @@ class Maze {
     mazeMatrix: number[][],
     finalPosition: Position = new Position(
       mazeMatrix.length - 2,
-      mazeMatrix.length - 2
+      mazeMatrix[0].length - 2
     )
   ) {
     this.mazeMatrix = mazeMatrix;
