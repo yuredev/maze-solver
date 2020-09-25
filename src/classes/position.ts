@@ -1,3 +1,7 @@
+/**
+ * @author Yure Matias <http://github.com/yuredev>
+ */
+
 export default class Position {
   private _i: number;
   private _j: number;

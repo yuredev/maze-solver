@@ -1,8 +1,12 @@
+/**
+ * @author Yure Matias <http://github.com/yuredev>
+ */
+
 import Maze from './classes/maze';
 import MazeSolver from './classes/maze_solver';
 import Position from './classes/position';
 import { resolve } from 'path';
-import { fileToMatrix } from './utils';
+import { fileToMatrix, printResult } from './utils';
 
 const rand = Math.trunc(Math.random() * 9 + 1);
 
@@ -20,10 +24,8 @@ const mazeSolver = new MazeSolver(maze);
 
 mazeSolver.execute(new Position(1, 1));
 
-const result = mazeSolver.getResult();
+const travel = mazeSolver.travel;
 
-console.clear();
-console.log('*** Saída Encontrada ***\n');
-console.log(maze.toString(result));
-console.log('*** Percurso ***\n');
-result.forEach(position => console.log(position.toString()));
+printResult(maze, travel);
+
+

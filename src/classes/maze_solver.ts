@@ -1,17 +1,19 @@
+/**
+ * @author Yure Matias <http://github.com/yuredev>
+ */
+
 import Maze from './maze';
 import Position from './position';
 
 export default class MazeSolver {
   private maze: Maze;
   private visitedPositions: Position[];
-  private travel: Position[];
-  private mazeIsSolved: boolean;
+  private _travel: Position[];
 
   constructor(maze: Maze) {
     this.maze = maze;
     this.visitedPositions = [];
-    this.travel = [];
-    this.mazeIsSolved = false;
+    this._travel = [];
   }
   private positionWasVisited(position: Position): boolean {
     const occurrences = this.visitedPositions.filter((pos) => {
@@ -19,20 +21,16 @@ export default class MazeSolver {
     }).length;
     return occurrences > 0;
   }
-  public getResult(): Position[] {
-    if (!this.mazeIsSolved) {
-      throw new Error('Getting Result Before Solving the Maze');
-    }
-    return this.travel;
+  public get travel(): Position[] {
+    return this._travel;
   }
   public execute(position: Position): boolean {
     if (this.positionWasVisited(position)) {
       return false;
     }
     this.visitedPositions.push(position);
-    this.travel.push(position);
+    this._travel.push(position);
     if (this.maze.isSolved(position)) {
-      this.mazeIsSolved = true;
       return true;
     }
     let solved = false;
@@ -42,16 +40,16 @@ export default class MazeSolver {
     if (this.maze.itsNotWall(position.moveRight())) {
       solved = this.execute(position.moveRight()) || solved;
     }
-    if (this.maze.itsNotWall(position.moveUp())) {
-      solved = this.execute(position.moveUp()) || solved; 
-    }
     if (this.maze.itsNotWall(position.moveLeft())) {
       solved = this.execute(position.moveLeft()) || solved;;
+    }
+    if (this.maze.itsNotWall(position.moveUp())) {
+      solved = this.execute(position.moveUp()) || solved; 
     }
     if (solved) {
       return true;
     }
-    this.travel.pop();
+    this._travel.pop();
     return false;
   }
 }
