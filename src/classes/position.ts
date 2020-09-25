@@ -29,4 +29,7 @@ export default class Position {
   public moveLeft(): Position {
     return this.movePosition(0, -1);
   }
+  public toString(): string {
+    return `(${this.i},${this.j})`;
+  }
 }

@@ -42,25 +42,28 @@ class Maze {
   public isSolved(position: Position): boolean {
     return position.isEqual(this.finalPosition);
   }
+  private isPartOfTravel(position: Position, travel: Position[]): boolean {
+    return travel.filter(p => {
+      return p.isEqual(position);
+    }).length > 0;
+  }
   /**
    * Mount the representation of the maze in a String and returns
    * @param position The current position to be printed with the maze
    * @returns A string representation of the maze 
    */
-  public toString(position: Position): string {
+  public toString(travel: Position[]): string {
     let result = '';
-    let wall = String.fromCharCode(9619);
-    wall += wall;
+    let wall = String.fromCharCode(9619) + String.fromCharCode(9619);
     for (let i = 0; i < this.mazeMatrix.length; i++) {
       for (let j = 0; j < this.mazeMatrix[i].length; j++) {
-        let current = this.mazeMatrix[i][j];
-        if (i === position.i && j === position.j) {
-          result += '><';
-        } else if (this.finalPosition.moveDown().isEqual(new Position(i, j))) {
-          result += '$$';
-        } else if (current == 0) {
+        if (this.finalPosition.moveDown().isEqual(new Position(i, j))) {
+          result += '##';
+        } else if (this.isPartOfTravel(new Position(i, j), travel)) {
+          result += '* ';
+        } else if (this.mazeMatrix[i][j] == 0) {
           result += '  ';
-        } else if (current == 1) {
+        } else if (this.mazeMatrix[i][j] == 1) {
           result += wall;
         }
       }

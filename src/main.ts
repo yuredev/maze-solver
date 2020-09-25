@@ -19,3 +19,11 @@ const maze = new Maze(mazeMatrix);
 const mazeSolver = new MazeSolver(maze);
 
 mazeSolver.execute(new Position(1, 1));
+
+const result = mazeSolver.getResult();
+
+console.clear();
+console.log('*** Saída Encontrada ***\n');
+console.log(maze.toString(result));
+console.log('*** Percurso ***\n');
+result.forEach(position => console.log(position.toString()));
