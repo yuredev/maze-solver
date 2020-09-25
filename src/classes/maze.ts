@@ -61,7 +61,7 @@ class Maze {
     for (let i = 0; i < this.mazeMatrix.length; i++) {
       for (let j = 0; j < this.mazeMatrix[i].length; j++) {
         if (this.isPartOfTravel(new Position(i, j), travel)) {
-          result += '* ';
+          result += 'o ';
         } else if (this.mazeMatrix[i][j] == 0) {
           result += '  ';
         } else if (this.mazeMatrix[i][j] == 1) {

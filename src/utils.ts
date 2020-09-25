@@ -26,10 +26,10 @@ function fileToMatrix(path: string) {
 }
 
 function printResult(maze: Maze, travel: Position[]) {
-  console.clear();
-  console.log('*** Saída Encontrada ***\n');
+  console.log('---------------------------------------------------');
   console.log(maze.toString(travel));
-  console.log('*** Percurso ***\n');
+  console.log('*** Saída Encontrada ***\n');
+  console.log('Percurso: \n');
   travel.forEach((position) => console.log(position.toString()));
 }
 
