@@ -19,7 +19,7 @@ class Maze {
   constructor(
     mazeMatrix: number[][],
     _finalPosition: Position = new Position(
-      mazeMatrix.length - 2,
+      mazeMatrix.length - 1,
       mazeMatrix[0].length - 2
     )
   ) {
@@ -60,9 +60,7 @@ class Maze {
     const wall = String.fromCharCode(9619);
     for (let i = 0; i < this.mazeMatrix.length; i++) {
       for (let j = 0; j < this.mazeMatrix[i].length; j++) {
-        if (this._finalPosition.moveDown().isEqual(new Position(i, j))) {
-          result += '##';
-        } else if (this.isPartOfTravel(new Position(i, j), travel)) {
+        if (this.isPartOfTravel(new Position(i, j), travel)) {
           result += '* ';
         } else if (this.mazeMatrix[i][j] == 0) {
           result += '  ';

@@ -4,7 +4,6 @@
 
 import Maze from './classes/maze';
 import MazeSolver from './classes/maze_solver';
-import Position from './classes/position';
 import { resolve } from 'path';
 import { fileToMatrix, printResult } from './utils';
 
@@ -22,7 +21,7 @@ const mazeMatrix = fileToMatrix(path);
 const maze = new Maze(mazeMatrix);
 const mazeSolver = new MazeSolver(maze);
 
-mazeSolver.execute(new Position(1, 1));
+mazeSolver.execute();
 
 const travel = mazeSolver.travel;
 

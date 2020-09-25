@@ -24,7 +24,7 @@ export default class MazeSolver {
   public get travel(): Position[] {
     return this._travel;
   }
-  public execute(position: Position): boolean {
+  public execute(position: Position = new Position(0,1)): boolean {
     if (this.positionWasVisited(position)) {
       return false;
     }
@@ -41,9 +41,9 @@ export default class MazeSolver {
       solved = this.execute(position.moveRight()) || solved;
     }
     if (this.maze.itsNotWall(position.moveLeft())) {
-      solved = this.execute(position.moveLeft()) || solved;;
+      solved = this.execute(position.moveLeft()) || solved;
     }
-    if (this.maze.itsNotWall(position.moveUp())) {
+    if (!position.isEqual(new Position(0,1)) && this.maze.itsNotWall(position.moveUp())) {
       solved = this.execute(position.moveUp()) || solved; 
     }
     if (solved) {
