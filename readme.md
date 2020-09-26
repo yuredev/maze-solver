@@ -25,7 +25,7 @@ yarn start
 yarn start <maze_path.txt>
 ```
 
-### Compile and Run passing parameter
+### Compile and run passing parameter
 ```
 yarn dev <maze_path.txt>
 ```
