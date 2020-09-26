@@ -20,7 +20,6 @@ const mazeMatrix = fileToMatrix(path);
 const maze = new Maze(mazeMatrix);
 const mazeSolver = new MazeSolver(maze);
 
-
 const result = mazeSolver.execute();
 
 result
