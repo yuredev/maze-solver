@@ -14,12 +14,12 @@ import Maze from './classes/maze';
 function fileToMatrix(path: string) {
   const allFileContent = readFileSync(path, 'utf8').trim();
   const lines = allFileContent.split('\n');
-  const cols = lines[0].split(',');
-  const matrix: number[][] = [];
+  const cols = lines[0].split('');
+  const matrix: string[][] = [];
   lines.forEach(_ => matrix.push([]));
   for (let i = 0; i < lines.length; i++) {
-    for (let j = 0; j < cols.length; j++) {
-      matrix[i][j] = parseInt(lines[i].split(',')[j]);
+    for (let j = 0; j < cols.length - 1; j++) {
+      matrix[i][j] = lines[i].split('')[j];
     }
   }
   return matrix;
@@ -29,7 +29,7 @@ function printResult(maze: Maze, travel: Position[]) {
   console.log('---------------------------------------------------');
   console.log(maze.toString(travel));
   console.log('*** Saída Encontrada ***\n');
-  console.log('Percurso: \n');
+  console.log('Percurso:');
   travel.forEach((position) => console.log(position.toString()));
 }
 

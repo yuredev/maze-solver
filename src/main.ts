@@ -17,14 +17,12 @@ const path = process.argv[2]
   : resolve('mazes_data', `maze_${rand}.txt`);
 
 const mazeMatrix = fileToMatrix(path);
-
 const maze = new Maze(mazeMatrix);
 const mazeSolver = new MazeSolver(maze);
 
-mazeSolver.execute();
 
-const travel = mazeSolver.travel;
+const result = mazeSolver.execute();
 
-printResult(maze, travel);
-
-
+result
+  ? printResult(maze, mazeSolver.travel)
+  : console.log('Saída não encontrada');

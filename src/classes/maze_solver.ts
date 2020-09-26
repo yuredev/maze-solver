@@ -24,7 +24,13 @@ export default class MazeSolver {
   public get travel(): Position[] {
     return this._travel;
   }
-  public execute(position: Position = new Position(0,1)): boolean {
+  public isInBottomBorder(position: Position): boolean {
+    return !position.isEqual(new Position(this.maze.finalPosition.i, position.j));
+  }
+  public isInTopBorder(position: Position) {
+    return !position.isEqual(new Position(0, position.j));
+  }
+  public execute(position: Position = new Position(0, 1)): boolean {
     if (this.positionWasVisited(position)) {
       return false;
     }
@@ -34,8 +40,10 @@ export default class MazeSolver {
       return true;
     }
     let solved = false;
-    if (this.maze.itsNotWall(position.moveDown())) {
-      solved = this.execute(position.moveDown()) || solved;
+    if (this.isInBottomBorder(position)) {
+      if (this.maze.itsNotWall(position.moveDown())) {
+        solved = this.execute(position.moveDown()) || solved;
+      }
     }
     if (this.maze.itsNotWall(position.moveRight())) {
       solved = this.execute(position.moveRight()) || solved;
@@ -43,8 +51,10 @@ export default class MazeSolver {
     if (this.maze.itsNotWall(position.moveLeft())) {
       solved = this.execute(position.moveLeft()) || solved;
     }
-    if (!position.isEqual(new Position(0,1)) && this.maze.itsNotWall(position.moveUp())) {
-      solved = this.execute(position.moveUp()) || solved; 
+    if (this.isInTopBorder(position)) {
+      if (this.maze.itsNotWall(position.moveUp())) {
+        solved = this.execute(position.moveUp()) || solved;
+      }
     }
     if (solved) {
       return true;

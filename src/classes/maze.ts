@@ -8,7 +8,7 @@ import Position from './position';
  * A Class that represents a maze that can be solved
  */
 class Maze {
-  private mazeMatrix: number[][];
+  private mazeMatrix: string[][];
   private _finalPosition: Position;
   /**
    * The Default constructor of the Maze class
@@ -17,7 +17,7 @@ class Maze {
    * @param _finalPosition The end of the maze 
    */
   constructor(
-    mazeMatrix: number[][],
+    mazeMatrix: string[][],
     _finalPosition: Position = new Position(
       mazeMatrix.length - 1,
       mazeMatrix[0].length - 2
@@ -32,7 +32,7 @@ class Maze {
    * @returns A boolean value that tells if the position is valid
    */
   public itsNotWall(position: Position): boolean {
-    return this.mazeMatrix[position.i][position.j] === 0;
+    return this.mazeMatrix[position.i][position.j] === '0';
   }
   /**
    * Verify if the maze is solved
@@ -62,9 +62,9 @@ class Maze {
       for (let j = 0; j < this.mazeMatrix[i].length; j++) {
         if (this.isPartOfTravel(new Position(i, j), travel)) {
           result += 'o ';
-        } else if (this.mazeMatrix[i][j] == 0) {
+        } else if (this.mazeMatrix[i][j] == '0') {
           result += '  ';
-        } else if (this.mazeMatrix[i][j] == 1) {
+        } else if (this.mazeMatrix[i][j] == '#') {
           result += wall + wall;
         }
       }
