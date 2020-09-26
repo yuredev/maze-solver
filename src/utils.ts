@@ -28,8 +28,8 @@ function fileToMatrix(path: string) {
 function printResult(maze: Maze, travel: Position[]) {
   console.log('---------------------------------------------------');
   console.log(maze.toString(travel));
-  console.log('*** Saída Encontrada ***\n');
-  console.log('Percurso:');
+  console.log('*** Maze Solved ***\n');
+  console.log('Travel:');
   travel.forEach((position) => console.log(position.toString()));
 }
 

@@ -24,4 +24,4 @@ const result = mazeSolver.execute();
 
 result
   ? printResult(maze, mazeSolver.travel)
-  : console.log('Saída não encontrada');
+  : console.log('Maze not solved :(');
